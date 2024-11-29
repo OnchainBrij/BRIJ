@@ -1,0 +1,135 @@
+.hero {
+  width: 100%;
+  background: linear-gradient( #010101 13%, #050520 70%);
+  height: 100vh;
+  position: relative;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.text {
+  width: 100%;
+  min-width: 350px;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  padding: 10px;
+  z-index: 1;
+}
+.text h1 {
+  color: #fff;
+  font-size: calc(2.3rem + 2vw);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 72px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 2% 0 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", sans-serif;
+}
+.hero button {
+  background: linear-gradient(90deg, #36bb91 0%, #4b47ff 100%);
+  color: #fff;
+  padding: 13px 40px;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  min-width: 230px;
+  transition: transform 0.3s ease-in-out;
+}
+.hero button:hover{
+  transform: scale(1.1);
+}
+.hero h1 span {
+  background: linear-gradient(90deg, #36bb91 0%, #4b47ff 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+.hero p{
+  background: linear-gradient(268.66deg, #36BB91 -29.04%, #FFFFFF 119.76%);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-align: center;
+  font-family: "Noto Sans", sans-serif;
+  font-weight: 400;
+  font-size: 0.9rem;
+  border-radius: 30px;
+}
+.hero .p-wrapper{
+  background: linear-gradient(319.09deg, rgba(255, 255, 255, 0.07) -1.28%, rgba(66, 66, 150, 0.021) 183.67%);
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+.big-circle{
+  width: 1500px;
+  height: 1500px;
+  position: absolute;
+  z-index:0;
+  border-radius: 50%;
+  bottom: -145%;
+  box-shadow: 
+  0 -10px 20px -10px #24c2a5, 
+  10px 0 20px -10px #24c2a5;
+  border: 1px solid #24c2a5;
+}
+.medium-circle{
+  width: 1050px;
+  height: 1050px;
+  position: absolute;
+  border-radius: 50%;
+  bottom: -95%;
+  animation: rotate 10s linear infinite forwards;
+  border-bottom: none;
+  border-left: none;
+  box-shadow: 20px 0 20px -10px #24c2a5;
+}
+
+.small-circle{
+  position: absolute;
+  width: 850px;
+  height: 850px;
+  border-radius: 50%;
+  bottom: -90%;
+  animation: anti-rotate 15s linear infinite forwards;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  box-shadow: 20px 0 20px -10px #24c2a5;
+}
+
+@keyframes rotate{
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes anti-rotate {
+  from{
+    transform: rotate(360deg);
+  }
+  to{
+    transform: rotate(0deg);
+  }
+}
+
