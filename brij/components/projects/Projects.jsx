@@ -81,15 +81,6 @@ const Projects = () => {
 
       {/* Sorting Dropdown */}
       <div className="sort-container">
-        <select
-          value={sortOption}
-          onChange={(e) => setSortOption(e.target.value)}
-          className="sorting-dropdown"
-        >
-          <option value="liked">Liked</option>
-          <option value="goal">Goal</option>
-          <option value="daysRemaining">Days Remaining</option>
-        </select>
       </div>
 
       <div className="project-container">
