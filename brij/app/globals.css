@@ -40,7 +40,7 @@ body {
   font-size: 1.1rem;
   min-width: 230px;
   transition: transform 0.3s ease-in-out;
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
 }
 .custom-button:hover {
   transform: scale(1.1);
@@ -70,7 +70,7 @@ footer,
 nav {
   font-family: "Poppins", sans-serif;
 }
-nav ul li {
+nav ul a {
   transition: 0.3s ease-in-out;
 }
 nav ul a:hover {
@@ -292,13 +292,13 @@ nav ul a:hover {
   z-index: 0;
   opacity: 0.8;
 }
-.modalbox{
+.modalbox {
   transition: 0.2s ease-in-out;
   animation: scaleup 0.2s linear forwards;
 }
-@keyframes scaleup{
-  from{
-    transform: scale(0)
+@keyframes scaleup {
+  from {
+    transform: scale(0);
   }
   to {
     transform: scale(1);
