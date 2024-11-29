@@ -1,0 +1,28 @@
+.support {
+  width: 90%;
+  padding: 40px 30px 50px;
+  min-width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+  font-size: calc(2rem + 2vw);
+  font-weight: 500;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 5% auto;
+}
+.support .icon{
+  color: #8548F4;
+}
+
+
+@media (max-width:768px){
+  .support{
+    font-size: 1.5rem;
+  }
+  .support img{
+    width: 30px;
+    height: auto;
+  }
+}
