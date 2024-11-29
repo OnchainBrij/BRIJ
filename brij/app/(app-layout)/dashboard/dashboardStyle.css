@@ -1,0 +1,222 @@
+.project-list{
+  width: 100%;
+display: grid;
+  gap: 1rem; 
+  padding: 1rem 1rem 3rem; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.dashboard .project-card{
+width: 320px;
+height: 320px;
+min-width: 250px;
+min-height: 250px;
+position: relative;
+margin: 0 auto;
+}
+.dashboard .project-card img{
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+z-index: 0;
+}
+.dashboard .project-data{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: transparent;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 0.6rem;
+color: #fff;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+backdrop-filter: blur(1px); 
+-webkit-backdrop-filter: blur(50px); 
+}
+.dashboard .top-flag{
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem
+}
+.dashboard .top-flag .time{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 5px;
+}
+.dashboard .category, .dashboard .invest-btn{
+  background-color: #674DF0;
+  padding: 10px 14px;
+  display: block;
+font-weight: 400;
+text-align: center;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+}
+.invest-btn{
+  margin: 2rem 0 0 0;
+}
+.dashboard .project-card h3{
+font-size: 1.2rem;
+font-weight: 700;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+}
+.dashboard  .project-card .metre {
+  margin: 0 0 10px;
+  width: 100%;
+}
+.dashboard  .project-card .metre .figures {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  color: #838694;
+  font-size: 14px;
+  font-weight: 500;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.dashboard  .project-card .outer-metre,
+.dashboard  .featured-card .outer-metre {
+  width: 100%;
+  background-color: #fff;
+  position: relative;
+  height: 9px;
+  display: block;
+  overflow: hidden;
+}
+.dashboard  .project-card .inner-metre,
+.dashboard  .featured-card .inner-metre {
+  width: 14.1%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-color: #29f0b4;
+}
+.dashboard  .project-card .goal {
+  font-size: 16px;
+  font-weight: 700;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  margin: 15px 0 0;
+}
+.dashboard .stats {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.loading-message {
+  font-size: 1.5rem;
+  color: #94A3B8;
+  text-align: center;
+  padding: 20px;
+}
+.bookmark-button {
+  background-color: #838694;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  position: absolute;
+  right: 5%;
+  top: 7%;
+  font-size: 4rem;
+  z-index: 10000;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bookmark-button:hover {
+  color: #000; 
+}
+
+.bookmark-icon {
+  font-size: 1.5rem;
+}
