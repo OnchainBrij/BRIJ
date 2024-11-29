@@ -137,14 +137,6 @@ const Projects = () => {
         <h2 className="text-2xl font-bold mb-4 text-black">
           Please connect your wallet!
         </h2>
-        <div className="flex flex-col gap-5">
-          <button
-            className="p-3 px-5 bg-[#24c2a5] text-white rounded-lg"
-            onClick={handleConnectWallet}
-          >
-            CONNECT WALLET
-          </button>
-        </div>
       </Modal>
     </div>
   );
