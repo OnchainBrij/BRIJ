@@ -1,0 +1,107 @@
+.contact-form-wrapper{
+    width: 65%;
+    margin: 3% auto 0;
+    display: flex;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(50px); 
+    border:  1px solid #FFFFFF1A;
+    border-radius: 45px;
+    padding: 100px 20px;
+    color: #fbfbfb;
+    font-family: "Inter", sans-serif;
+    justify-content: center;
+    overflow: hidden;
+}
+.contact-form-wrapper div{
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.contact-form-wrapper .leftside{
+    width: 60%;
+}
+.contact-form-wrapper .rightside{
+    width: 35%;
+}
+.contact-form-wrapper h1{
+font-size: calc(1.7rem + 1.8vw);
+font-weight: 400;
+line-height: 58px;
+letter-spacing: -1px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+padding: 0 10px 0 0 ;
+margin: 15px 0;
+}
+.contact-form-wrapper p{
+font-size: 1.2rem;
+font-weight: 300;
+line-height: 30px;
+text-align: left;
+text-underline-position: from-font;
+text-decoration-skip-ink: none;
+margin: 5px 0;
+padding: 0 10px;
+
+}
+.contact-form-wrapper form{
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    padding: 18px 10px;
+}
+.contact-form-wrapper form input, .contact-form-wrapper textarea, .contact-form-wrapper button{
+    padding: 10px 14px;
+    border-radius: 20px;
+    outline: none;
+    padding: none;
+    color: #fbfbfb;
+    background-color: #010101;
+    border: 1px solid #FFFFFF33;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+.contact-form-wrapper button{
+    background-color: #fff;
+    border: none;
+    color: #010101;
+    font-weight: 600;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s ease-in-out;
+}
+.contact-form-wrapper button span{
+    background-color: #010101;
+    color: #fbfbfb;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
+.contact-form-wrapper button:active{
+    transform: scale(0.9);
+}
+
+
+@media(max-width:1024px){
+    .contact-form-wrapper{
+        width: 90%;
+    }
+}
+
+@media(max-width:768px){
+    .contact-form-wrapper{
+        flex-wrap: wrap;
+        
+    }
+}
