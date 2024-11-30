@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FaBookmark, FaClock } from "react-icons/fa";
-import "./projectStyle.css"; 
+import "./projectStyle.css";
 
 const ProjectCard = ({
   item,
@@ -10,12 +10,14 @@ const ProjectCard = ({
   onLike,
   daysRemaining,
   percentageRaised,
+  onClick,
 }) => {
   return (
     <div
       className="project-card"
-      data-aos="fade-up"
-      data-aos-delay={item.index * 100}
+      // data-aos="fade-up"
+      // data-aos-delay={item?.index * 100}
+      onClick={onClick}
     >
       <div className="top">
         <img src={`https://gateway.pinata.cloud/ipfs/${item.image}?pinataGatewayToken=${process.env.NEXT_PUBLIC_GATEWAY_TOKEN}`} alt={item.name} />
