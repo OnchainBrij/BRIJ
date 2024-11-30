@@ -3,7 +3,7 @@ import { useLikedProjects } from "../../context/LikedProjectContext";
 import Modal from "../Modal";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Mousewheel } from "swiper/modules";
-import ProjectCard from "./ProjectCard"; // Import the new component
+import HeroProjectCard from "./HeroProjectCard"; // Import the new component
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "swiper/css/bundle";
@@ -130,7 +130,7 @@ const Projects = () => {
 
               return (
                 <SwiperSlide key={index}>
-                  <ProjectCard
+                  <HeroProjectCard
                     item={{ ...item, index }}
                     isLiked={isLiked}
                     toggleLike={toggleLike}
