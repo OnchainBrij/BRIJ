@@ -33,7 +33,7 @@ const ProjectCard = ({
               likedProjects: item.id,
             });
           }}
-        >
+        >w
           <FaBookmark />
         </div>
       </div>

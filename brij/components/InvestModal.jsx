@@ -62,10 +62,11 @@ function InvestModal({ projectItem, setIsModalOpen }) {
       chain: 'sui:devnet'
      }, {
        onSuccess: async (result) => {
-          const updatedCampaign = await getCrowdfundDetails(projectItem.id);
+          const updatedCampaign = await getProjectInfo(projectItem.id);
           setCampaign(updatedCampaign);
           setIsWithdrawing(false);
           setDigest(result.digest);
+          router.push('/explore-projects')
        },
        onError: (error) => {
          console.error('Error withdrawing:', error);
