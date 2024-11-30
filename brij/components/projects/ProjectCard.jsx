@@ -3,6 +3,7 @@
 import React from "react";
 import { FaBookmark, FaClock } from "react-icons/fa";
 import "./projectStyle.css";
+import axios from "axios";
 
 const ProjectCard = ({
   item,
@@ -20,10 +21,18 @@ const ProjectCard = ({
       onClick={onClick}
     >
       <div className="top">
-        <img src={`https://gateway.pinata.cloud/ipfs/${item.image}?pinataGatewayToken=${process.env.NEXT_PUBLIC_GATEWAY_TOKEN}`} alt={item.name} />
+        <img
+          src={`https://gateway.pinata.cloud/ipfs/${item.image}?pinataGatewayToken=${process.env.NEXT_PUBLIC_GATEWAY_TOKEN}`}
+          alt={item.name}
+        />
         <div
           className={`heart ${isLiked ? "active" : ""}`}
-          onClick={() => onLike(item.id)}
+          onClick={async () => {
+            await axios.post("/api/bookmark", {
+              address: await useCurrentAccount(),
+              likedProjects: item.id,
+            });
+          }}
         >
           <FaBookmark />
         </div>
@@ -33,7 +42,8 @@ const ProjectCard = ({
         <div className="top-flag">
           <span className="category">{item.category}</span>
           <span className="time">
-            <FaClock className="icon" /> {daysRemaining > 0 ? `${daysRemaining} days left`: "Expired" } 
+            <FaClock className="icon" />{" "}
+            {daysRemaining > 0 ? `${daysRemaining} days left` : "Expired"}
           </span>
         </div>
 
