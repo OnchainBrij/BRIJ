@@ -2,7 +2,7 @@
 
 import React from "react";
 import { FaBookmark, FaClock } from "react-icons/fa";
-import "./projectStyle.css"; 
+import "./projectStyle.css";
 
 const ProjectCard = ({
   item,
@@ -10,10 +10,12 @@ const ProjectCard = ({
   toggleLike,
   daysRemaining,
   percentageRaised,
+  handleClick, // Optional prop
 }) => {
   return (
     <div
-      className="project-card"
+      className="project-card cursor-pointer"
+      onClick={() => handleClick && handleClick(item)} // Only call if handleClick exists
       data-aos="fade-up"
       data-aos-delay={item.index * 100}
     >
@@ -21,7 +23,10 @@ const ProjectCard = ({
         <img src={item.image} alt={item.name} />
         <div
           className={`heart ${isLiked ? "active" : ""}`}
-          onClick={() => toggleLike(item.index)}
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent click from propagating to the card
+            toggleLike(item.index);
+          }}
         >
           <FaBookmark />
         </div>

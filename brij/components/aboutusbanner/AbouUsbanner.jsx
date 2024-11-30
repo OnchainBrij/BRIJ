@@ -15,11 +15,9 @@ const AbouUsbanner = () => {
     <div className="about-us-banner overflow-hidden">
       <div className="left-box">
         <div data-aos="fade-up">
-          <h1>Learn About our Company</h1>
+          <h1>Explore What Drives Us</h1>
           <p>
-            There are many variations of passages of available but the majority
-            have suffered alteration in some form, by injected humour or
-            randomised words.
+            At BRIJ, we bridge the gap between ambitious innovators and passionate investors. Together, we make ideas a reality. 
           </p>
         </div>
 
@@ -28,10 +26,8 @@ const AbouUsbanner = () => {
             <FaCheckCircle />
           </div>
           <span>
-            <h3>Highest Success Rates</h3>
-            <p>
-              Lorem Ipsum velit auctor aliquet. Aenean sollicitudin, lorem is
-              simply free text quis bibendum.
+            <h3> Our Vision</h3>
+            <p>A world where anyone anywhere  can fund or be funded to achieve their dreams.
             </p>
           </span>
         </div>
@@ -41,10 +37,8 @@ const AbouUsbanner = () => {
             <FaCheckCircle />
           </div>
           <span>
-            <h3>Millions in Funding</h3>
-            <p>
-              Lorem Ipsum velit auctor aliquet. Aenean sollicitudin, lorem is
-              simply free text quis bibendum.
+            <h3>Our Mission</h3>
+            <p>To democratize funding by creating a transparent, inclusive and seamless platform for both creators and backers. 
             </p>
           </span>
         </div>

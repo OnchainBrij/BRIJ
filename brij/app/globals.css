@@ -29,9 +29,9 @@ body {
 
 .custom-button {
   background: linear-gradient(90deg, #36bb91 0%, #4b47ff 100%);
-  color: #fff;
+  color: #fff !important;
   padding: 13px 40px;
-  border-radius: 50px;
+  border-radius: 50px !important; 
   font-weight: 500;
   cursor: pointer;
   text-align: center;

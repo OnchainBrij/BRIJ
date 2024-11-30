@@ -24,7 +24,7 @@ const ContactForm = () => {
         Accept: "application/json",
       },
       body: JSON.stringify({
-        access_key: "5dec197b-dca9-4df5-99cc-c5cab06ea2ad",
+        access_key: "6d2ef788-03cc-499d-8a7c-4a09a4926943",
         name: e.target.name.value,
         email: e.target.email.value,
         message: e.target.message.value,
@@ -102,7 +102,7 @@ const ContactForm = () => {
         </form>
 
         {notification && (
-          <div className="notification text-center text-[green]" data-aos="fade-up">
+          <div className="notification text-center text-[#fbfbfb]" data-aos="fade-up">
             {notification}
           </div>
         )}

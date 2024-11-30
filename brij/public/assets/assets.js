@@ -142,28 +142,29 @@ export const projects = [
 
 export const testimonialData = [
   {
-    name: "Okeke Chinedu",
-    testament: "Never to list us on tier one exchanges.  from A to Z.",
-    image: "/assets/video-img.png",
+    name: "@Phavezizzy",
+    testament: "'BRIJ made it easy for me to connect with investors who believed in my vision'",
+    image: "https://res.cloudinary.com/dwedz2laa/image/upload/v1732962771/photo_1_2024-11-29_23-31-52_jep1qq.jpg",
   },
   {
-    name: "Okeke Chinaza",
+    name: "@oxAfroTechboss",
     testament:
-      "Never thought to list us on tier one exchanges. It gutilities from A to Z.”",
-    image: "/assets/video-img.png",
+      "'With BRIJ, i turned an idea into reality. The platform support and visibility gave my education product the boost it needs'",
+    image: "https://res.cloudinary.com/dwedz2laa/image/upload/v1732962929/photo_3_2024-11-29_23-31-53_ylvqrd.jpg",
   },
   {
-    name: "Okeke Ebuka",
+    name: "@dannyClassic",
     testament:
-      "“Never thouger one exchanges. It gave us funds to develop our utilities from A to Z.”",
-    image: "/assets/video-img.png",
+      "“Investing through BRIJ has been seamless. The transparency and updates from creators keep me engaged and confident in my choices. ”",
+    image: "https://res.cloudinary.com/dwedz2laa/image/upload/v1732962778/photo_2_2024-11-29_23-31-52_rpac6a.jpg",
   },
   {
-    name: "Okeke Emerie",
+    name: "@mikeene",
     testament:
-      "“Never thought w one exchanges. It gave us funds to develop our utilities from A to Z.”",
-    image: "/assets/video-img.png",
+      "' I love how BRIJ categorizes startups. It's so easy to find projects in sectors I'm passionate about, like technology and medical innovation.  '",
+    image: "https://res.cloudinary.com/dwedz2laa/image/upload/v1732962809/photo_4_2024-11-29_23-31-53_wfvqye.jpg",
   },
+  
 ];
 
 export const categoryButton = [

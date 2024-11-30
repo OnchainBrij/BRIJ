@@ -1,3 +1,6 @@
+import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
+
+
 function JoinUs() {
   return (
     <div className="flex justify-center items-center w-full mt-[10%] join-us">
@@ -5,9 +8,8 @@ function JoinUs() {
         <p className="text-[1.9rem] text-[#1B1F2E] font-bold max-md:text-center">
           Ready to Raise Funds for Idea?
         </p>
-        <button className="bg-[#1B1F2E] uppercase text-white text-[1.05rem] text-center flex px-5 py-3 rounded-full hover:scale-110 duration-150">
-          Make it Happen
-        </button>
+        
+        <ConnectButton style={{backgroundColor: "#1b1f2e", textTransform: "uppercase", borderRadius: "50px", color: "#fff", fontSize: "1.03rem", textAlign: "center", padding: "2rem 3rem"  }} connectText="Make it Happen" />
       </div>
     </div>
   );
