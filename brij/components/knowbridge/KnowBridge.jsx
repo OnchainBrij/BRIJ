@@ -22,7 +22,7 @@ const KnowBridge = () => {
               To bridge creators and investors, enabling innovation and shared success through collaborative funding.
             </p>
             <div className="stats">
-              <Image src={image.right_stats} alt="" />
+              <Image src={image.right_stats} alt="Statistics" />
               <ul>
                 <li>
                   <FaCheck className="icon" /> Empower innovation
@@ -35,18 +35,19 @@ const KnowBridge = () => {
                 </li>
               </ul>
             </div>
+            <a href="/about-us" className="learn-more-link">
+              Learn more about us
+            </a>
           </div>
         );
       case "Mission":
         return (
           <div data-aos="fade-left">
             <p className="desc">
-              There are many variations of passages of available but the
-              majority have in some form, by injected humou or words which don’t
-              look.
+              There are many variations of passages of available but the majority have been altered in some form, injected with humor or words that don’t seem to fit.
             </p>
             <div className="stats">
-              <Image src={image.right_stats} alt="" />
+              <Image src={image.right_stats} alt="Statistics" />
               <ul>
                 <li>
                   <FaCheck className="icon" /> Mission item 1
@@ -65,12 +66,10 @@ const KnowBridge = () => {
         return (
           <div data-aos="fade-left">
             <p className="desc">
-              There are many variations of passages of available but the
-              majority have in some form, by injected humou or words which don’t
-              look.
+              The history of innovation is full of iterations and creativity, showcasing the resilience of creators across generations.
             </p>
             <div className="stats">
-              <Image src={image.right_stats} alt="" />
+              <Image src={image.right_stats} alt="Statistics" />
               <ul>
                 <li>
                   <FaCheck className="icon" /> History item 1
@@ -93,15 +92,14 @@ const KnowBridge = () => {
   return (
     <div className="know-bridge-container" data-aos="fade-up">
       <div className="know-bridge-flexbox">
-        {/* Left side */}
+        {/* Left Side */}
         <div className="left" data-aos="fade-right">
           <h3>
-            <span className="tiny-box"></span>Expore BRIj
+            <span className="tiny-box"></span>Explore BRIj
           </h3>
           <h1>Fund the Next Big Thing</h1>
           <p>
-            There are many variations of passages of available but the majority
-            have suffered alteration in some.
+            There are many variations of passages available, but the majority have suffered alteration in some form.
           </p>
           <div className="percent-container">
             <div className="figures">
@@ -120,7 +118,8 @@ const KnowBridge = () => {
             </div>
           </div>
         </div>
-        {/* Right side */}
+
+        {/* Right Side */}
         <div className="right" data-aos="fade-left">
           <div className="head" data-aos="fade-down">
             <button

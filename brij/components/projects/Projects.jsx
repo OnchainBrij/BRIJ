@@ -127,7 +127,6 @@ const Projects = () => {
                 item.goal
               );
               const isLiked = likedProjects.includes(index);
-
               return (
                 <SwiperSlide key={index}>
                   <HeroProjectCard

@@ -161,11 +161,11 @@ const Navbar = () => {
           Get started with Brij
         </h2>
 
-        <div className="flex flex-col gap-5 ">
-          <div className="custom-connect-button flex justify-center">
-            <ConnectButton connectText="Connect wallet" />
-          </div>
-        </div>
+        
+          
+            <ConnectButton  className="custom-connect-button flex justify-center" connectText="Connect wallet" />
+          
+        
       </Modal>
     </div>
   );

@@ -38,7 +38,7 @@
   justify-content: center;
   font-family: "Roboto", sans-serif;
 }
-.hero button {
+.hero .ConnectButton {
   background: linear-gradient(90deg, #36bb91 0%, #4b47ff 100%);
   color: #fff;
   padding: 13px 40px;
@@ -133,3 +133,9 @@
   }
 }
 
+@media (max-width:768px){
+  .text h1 {
+    font-size: 1.8rem;
+    line-height: 45px;
+  }
+}
