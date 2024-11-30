@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useCurrentAccount } from "@mysten/dapp-kit";
 import { getAllProjects } from "../../utils";
 import ProjectCard from "../../../components/projects/ProjectCard";
-import InvestModal from "./InvestModal";
-import { projects as Projects } from "../../../components/projects/Projects";
+
 
 function ExploreProjects() {
   const currentAccount = useCurrentAccount();
