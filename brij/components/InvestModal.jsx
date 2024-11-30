@@ -69,8 +69,17 @@ function InvestModal({ projectItem, setIsModalOpen }) {
    
 
   };
+
+  function calculateDaysLeft(timestamp) {
+    const currentDate = new Date();
+    const targetDate = new Date(timestamp * 1000);
+    const timeDifference = targetDate.getTime() - currentDate.getTime();
+    const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+    return daysLeft > 0 ? daysLeft : 0;
+  }
   const isOwner = currentAccount.address === projectItem.creator;
   const canWithdraw = isOwner && Number(projectItem.currentAmount) >= 0;
+
   return (
     <div
       className="fixed inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 w-full z-50"
@@ -130,18 +139,16 @@ function InvestModal({ projectItem, setIsModalOpen }) {
             <p>
               Goal: <span className="text-[#29F0B4]">{projectItem?.targetAmount} SUI</span>
             </p>
-            <p>
+            {/* <p>
               <span>Pledged</span>
               <span> 40 SUI</span>
-            </p>
+            </p> */}
           </div>
 
           <div className="flex items-center gap-x-8">
             <div className="flex space-x-2 [&_p]:bg-white [&_p]:text-black [&_p]:p-3 [&_p]:text-sm mt-3">
-              {/* <p>10 SUI</p>
-              <p>30 SUI</p>
-              <p>50 SUI</p> */}
-               <input
+           
+              {!canWithdraw && (<input
                   type="number"
                   min="0"
                   step="0.01"
@@ -149,17 +156,13 @@ function InvestModal({ projectItem, setIsModalOpen }) {
                   onChange={(e) => setContributionAmount(e.target.value)}
                   placeholder="Amount in SUI"
                   className="flex-1 p-2 text-black border rounded-lg"
-              />
+              />)}
             </div>
 
             <div className="flex items-center space-x-2 mt-3">
-              <p>SUI</p>
+            {!canWithdraw &&  <p>SUI</p>}
               <div className="flex">
-                <input
-                  type="text"
-                  name="amount"
-                  className="w-[4rem] outline-none bg-[#323543] pl-2"
-                />
+  
              {canWithdraw ? ( <button type="button" className="bg-gradient-to-r from-[#36bb91] to-[#4b47ff] p-3" onClick={handleWithdraw}
                   disabled={isWithdrawing || !contributionAmount}>
                   Withdraw
@@ -169,10 +172,10 @@ function InvestModal({ projectItem, setIsModalOpen }) {
                 </button>)}
               </div>
             </div>
-
-            <p>
-              217 <span>Days Left</span>
-            </p>
+{calculateDaysLeft(projectItem?.deadline) > 0 ?
+(            <p>
+              {calculateDaysLeft(projectItem?.deadline)} <span>Days Left</span>
+            </p>) : (<p>Expired</p>)}
           </div>
         </div>
       </div>
