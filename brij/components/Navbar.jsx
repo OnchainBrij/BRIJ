@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { FiX, FiAlignCenter } from "../utils/icons";
+import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 import Link from "next/link";
 import Modal from "./Modal";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { projects } from "../public/assets/assets";
 
@@ -14,6 +15,7 @@ const Navbar = () => {
     [name, setName] = useState("chidile "),
     [address, setAddress] = useState("987653"),
     [isModalOpen, setIsModalOpen] = useState(false),
+    [loading, setLoading] = useState(false),
     testDb = async (e) => {
       console.log("writing");
       try {
@@ -24,6 +26,7 @@ const Navbar = () => {
         console.log(error);
       }
     },
+
     getUsers = async () => {
       console.log("reading");
 
@@ -44,6 +47,14 @@ const Navbar = () => {
 
       console.log(await axios.get("/api/projects"));
     };
+    const currentAccount = useCurrentAccount();
+    const router = useRouter();
+    useEffect(() => {
+      if (currentAccount) {
+        setLoading(true);
+        router.push("/dashboard");
+      }
+    }, [currentAccount, router]);
 
   const currentPath = usePathname();
   const isActiveNav = (path) => {
@@ -72,6 +83,14 @@ const Navbar = () => {
       window.removeEventListener("click", handleClickOutside);
     };
   }, [isNavOpen]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -143,9 +162,9 @@ const Navbar = () => {
         </h2>
 
         <div className="flex flex-col gap-5 ">
-          <button className="p-3 px-5  bg-[#24c2a5] text-white rounded-lg">
-            CONNECT WALLET
-          </button>
+          <div className="custom-connect-button flex justify-center">
+            <ConnectButton connectText="Connect wallet" />
+          </div>
         </div>
       </Modal>
     </>
