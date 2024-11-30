@@ -2,28 +2,26 @@
 
 import React from "react";
 import { FaBookmark, FaClock } from "react-icons/fa";
-import "./projectStyle.css";
+import "./projectStyle.css"; 
 
-const ProjectCard = ({
+const HeroProjectCard = ({
   item,
   isLiked,
   onLike,
   daysRemaining,
   percentageRaised,
-  onClick,
 }) => {
   return (
     <div
       className="project-card"
-      // data-aos="fade-up"
-      // data-aos-delay={item?.index * 100}
-      onClick={onClick}
+      data-aos="fade-up"
+      data-aos-delay={item.index * 100}
     >
       <div className="top">
-        <img src={`https://gateway.pinata.cloud/ipfs/${item.image}?pinataGatewayToken=${process.env.NEXT_PUBLIC_GATEWAY_TOKEN}`} alt={item.name} />
+        <img src={item.image} alt={item.name} />
         <div
           className={`heart ${isLiked ? "active" : ""}`}
-          onClick={() => onLike(item.id)}
+          onClick={() => onLike(item.index)}
         >
           <FaBookmark />
         </div>
@@ -41,7 +39,7 @@ const ProjectCard = ({
 
         <div className="metre">
           <div className="figures">
-            <p>Raised: {item.currentAmount} SUI</p>
+            <p>Raised: {item.raised} SUI</p>
             <p>{percentageRaised}%</p>
           </div>
           <span className="outer-metre">
@@ -52,10 +50,10 @@ const ProjectCard = ({
           </span>
         </div>
 
-        <h4 className="goal">Goal: {item.targetAmount} SUI</h4>
+        <h4 className="goal">Goal: {item.goal} SUI</h4>
       </div>
     </div>
   );
 };
 
-export default ProjectCard;
+export default HeroProjectCard;
