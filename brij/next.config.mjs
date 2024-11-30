@@ -5,6 +5,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "imagizer.imageshack.com",
       "peach-added-rooster-898.mypinata.cloud",
+      "gateway.pinata.cloud"
     ],
   },
 };
