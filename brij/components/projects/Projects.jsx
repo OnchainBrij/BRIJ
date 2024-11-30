@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useLikedProjects } from "../../context/LikedProjectContext";
-import { projects } from "../../public/assets/assets";
 import Modal from "../Modal";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Mousewheel } from "swiper/modules";
