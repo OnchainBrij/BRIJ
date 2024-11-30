@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { ConnectButton, useCurrentAccount } from '@mysten/dapp-kit';
 import { getProjectInfo, contributeToCampaign, withdrawFunds } from "../app/utils";
 import { useSignAndExecuteTransaction } from '@mysten/dapp-kit';
@@ -7,6 +8,7 @@ import { useSignAndExecuteTransaction } from '@mysten/dapp-kit';
 
 function InvestModal({ projectItem, setIsModalOpen }) {
   const currentAccount = useCurrentAccount();
+  const router = useRouter();
   const { mutate: signAndExecuteTransaction } = useSignAndExecuteTransaction();
   const [_digest, setDigest] = useState('');
   const [campaign, setCampaign] = useState(null);
@@ -36,6 +38,9 @@ function InvestModal({ projectItem, setIsModalOpen }) {
              setCampaign(updatedCampaign);
              setContributionAmount('');
              setDigest(result.digest);
+             setIsContributing(false);
+             router.push('/explore-projects')
+             
           },
           onError: (error) => {
             console.error('Error contributing:', error);
