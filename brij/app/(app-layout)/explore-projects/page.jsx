@@ -5,7 +5,6 @@ import { getAllProjects } from "../../utils";
 import ProjectCard from "../../../components/projects/ProjectCard";
 import InvestModal from "../../../components/InvestModal";
 
-
 function ExploreProjects() {
   const currentAccount = useCurrentAccount();
   const [loading, setLoading] = useState(true);
@@ -115,12 +114,8 @@ function ExploreProjects() {
           />
         )}
       </div>
-
-      {selectedProject && (
-        <InvestModal project={selectedProject} onClose={closeModal} />
-      )}
     </div>
   );
-};
+}
 
 export default ExploreProjects;
