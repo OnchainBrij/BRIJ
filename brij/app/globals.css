@@ -31,7 +31,7 @@ body {
   background: linear-gradient(90deg, #36bb91 0%, #4b47ff 100%);
   color: #fff !important;
   padding: 13px 40px !important;
-  border-radius: 50px !important; 
+  border-radius: 50px !important;
   font-weight: 500;
   cursor: pointer;
   text-align: center;
@@ -325,4 +325,11 @@ nav ul a:hover {
   border-radius: 0.5rem !important;
   background-color: #24c2a5 !important;
   color: #ffffff !important;
+  margin: 0 auto !important;
+}
+.connect-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }
