@@ -94,7 +94,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex justify-center items-center fixed right-0  [&_a]:uppercase space-x-6 z-50 max-md:space-x-0 max-md:justify-end">
+      <nav className="flex justify-center items-center fixed right-0  [&_a]:uppercase space-x-6 z-50 max-md:space-x-0 max-md:justify-end text-white dark:text-white">
         <div className="flex-1 max-md:hidden"></div>
         <div
           className={`flex space-x-4 [&_li]:cursor-pointer [&_li]:text-white pt-2 max-md:fixed max-md:flex-col max-md:inset-0 max-md:w-full max-md:bg-[#29292973] max-md:space-x-0 max-md:-z-10 max-md:pt-20 max-md:items-center max-md:h-[60%] max-md:transform max-md:transition-transform max-md:duration-300 ${
