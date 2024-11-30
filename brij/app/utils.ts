@@ -95,7 +95,6 @@ export const checkCampaignStatus = async (projectId: string) => {
     return null;
 }
 
-// Get campaign progress
 export const getCampaignProgress = async (projectId: string) => {
     const info = await brigProjectsQueries.getProjectInfo(projectId);
     

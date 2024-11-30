@@ -10,6 +10,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "Brij",
+  description: "...drive the next wave of funding",
 };
 
 export default function RootLayout({ children }) {

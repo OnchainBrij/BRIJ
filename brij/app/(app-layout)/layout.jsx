@@ -8,12 +8,17 @@ export default function AppLayout({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex w-full h-[100vh]" style={{fontFamily: "'poppins', sans-serif" }} >
+    <div
+      className="flex w-full h-[100vh]"
+      style={{ fontFamily: "'poppins', sans-serif" }}
+    >
       <AppSidenav isOpen={isOpen} setIsOpen={setIsOpen} />
 
       <div className="flex flex-col flex-grow">
         <AppHeader setIsOpen={setIsOpen} />
-        <div style={{height: "100vh", overflowY: "scroll" }}>{children}</div>
+        <div style={{ height: "100vh", overflowY: "scroll" }}>
+          {children}
+        </div>{" "}
       </div>
       {isOpen ? (
         <div

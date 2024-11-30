@@ -104,35 +104,32 @@ const Navbar = () => {
           } `}
         >
           <ul className="flex space-x-7 p-3 px-5 rounded-lg max-md:flex-col max-md:space-x-0 max-md:space-y-3 max-md:items-center max-md:justify-center lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg">
-            <Link href={"/"} className={isActiveNav("/")}>
+            <Link href="/" className={isActiveNav("/")}>
               HOME
             </Link>
 
-            <Link href={"/about-us"} className={isActiveNav("/about-us")}>
+            <Link href="/about-us" className={isActiveNav("/about-us")}>
               ABOUT US
             </Link>
 
-            <Link href={"/projects"} className={isActiveNav("/projects")}>
+            <Link href="/projects" className={isActiveNav("/projects")}>
               PROJECTS
             </Link>
 
-            <Link href={"/reviews"} className={isActiveNav("/reviews")}>
+            <Link href="/reviews" className={isActiveNav("/reviews")}>
               REVIEWS
             </Link>
 
-            <Link href={"#"}>Partnership</Link>
-            <Link href={"/#contact"}>Contact</Link>
+            <Link href="#">Partnership</Link>
+            <Link href="/#contact">Contact</Link>
           </ul>
-          <Link href={"#"}>Apply For Funding</Link>
-
-          {/*  */}
-
-          {/* experimentally write to DB */}
+          <ul className="flex  p-3 px-5 rounded-lg max-md:flex-col max-md:text-center max-md:p-0 lg:bg-white lg:bg-opacity-20 lg:backdrop-blur-lg">
+            <Link href="#">Apply For Funding</Link>
+          </ul>
+          {/* experimentally write to DB
           <button onClick={addProject}> DBw</button>
-          {/* experimentally read from DB */}
-          <button onClick={getProjects}> DBr</button>
-
-          {/*  */}
+          experimentally read from DB
+          <button onClick={getProjects}> DBr</button> */}
         </div>
 
         <div className="flex space-x-7 cursor-pointer pr-5 pt-2">
