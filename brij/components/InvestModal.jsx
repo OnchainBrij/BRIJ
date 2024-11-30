@@ -66,7 +66,7 @@ function InvestModal({ projectItem, setIsModalOpen }) {
       },
       {
         onSuccess: async (result) => {
-          const updatedCampaign = await getCrowdfundDetails(projectItem.id);
+          const updatedCampaign = await getProjectInfo(projectItem.id);
           setCampaign(updatedCampaign);
           setIsWithdrawing(false);
           setDigest(result.digest);
