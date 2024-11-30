@@ -69,13 +69,10 @@ function ExploreProjects() {
         : [...prevLiked, index]
     );
   };
-<<<<<<< HEAD
-=======
   const handleInvestModal = (item) => {
     setIsModalOpen(true);
     setProjectItem(item);
   };
->>>>>>> 609b9e635a5219a2e6236f978ad23c716c4796f5
 
   function calculateDaysLeft(timestamp) {
     const currentDate = new Date();
@@ -105,14 +102,9 @@ function ExploreProjects() {
                 (item?.currentAmount / item.targetAmount) * 100
               )}
               isLiked={isLiked}
-<<<<<<< HEAD
-              onLike={() => toggleLike(item?.id)}
-              className="text-white"
-=======
               onLike={() => toggleLike(index)}
               className="text-white"
               onClick={() => handleInvestModal(item)}
->>>>>>> 609b9e635a5219a2e6236f978ad23c716c4796f5
             />
           );
         })}
