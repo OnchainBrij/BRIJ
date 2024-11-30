@@ -11,6 +11,7 @@ import {
   FaUserCog,
 } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 function AppSidenav({ isOpen, setIsOpen }) {
   const [showUserProfile, setShowUserProfile] = useState(false);
@@ -36,8 +37,9 @@ function AppSidenav({ isOpen, setIsOpen }) {
           className="hidden max-md:flex"
         />
       </div>
-
-      <div className="logo text-white">Logo</div>
+      <Link href={"/dashboard"} className=" z-30 ">
+        <Image src={"/assets/brijlogo.png"} width={100} height={100}></Image>
+      </Link>
       <ul className="text-gray-200">
         <Link href="dashboard">
           <li>
