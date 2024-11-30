@@ -3,17 +3,19 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./projectsPage.css";
-import { categoryButton, projects } from "../../public/assets/assets";
+import { categoryButton } from "../../public/assets/assets";
 import { FaBookmark, FaClock, FaHeart } from "react-icons/fa";
 import Navbar from "../../components/Navbar";
 import JoinUs from "../../components/JoinUs";
 import { FaStar, FaChevronUp } from "react-icons/fa6";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import axios from "axios";
 
 const Page = () => {
   // scroll-to-top-function
-  const [showScrollButton, setShowScrollButton] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false),
+    [projects, setProjects] = useState([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +28,12 @@ const Page = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      setProjects((await axios.get("/api/projects")).data.Projects);
+    })();
   }, []);
 
   const [likedProjects, setLikedProjects] = useState(() => {

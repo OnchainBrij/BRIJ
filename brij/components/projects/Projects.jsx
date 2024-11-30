@@ -9,17 +9,24 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import "swiper/css/bundle";
 import "./projectStyle.css";
+import axios from "axios";
 
 const Projects = () => {
-  const { likedProjects, setLikedProjects } = useLikedProjects();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
+  const { likedProjects, setLikedProjects } = useLikedProjects(),
+    [isModalOpen, setIsModalOpen] = useState(false),
+    [isWalletConnected, setIsWalletConnected] = useState(false),
+    [projects, setProjects] = useState([]);
   const [sortOption, setSortOption] = useState("liked"); // State for sorting
 
   useEffect(() => {
     AOS.init({ duration: 500, once: true });
   }, []);
 
+  useEffect(() => {
+    (async () => {
+      setProjects((await axios.get("/api/projects")).data.Projects);
+    })();
+  }, []);
   // Utility function to calculate days remaining
   const calculateDaysRemaining = (endDate) => {
     const today = new Date();
@@ -67,7 +74,9 @@ const Projects = () => {
       return b.goal - a.goal; // Highest goal first
     }
     if (sortOption === "daysRemaining") {
-      return calculateDaysRemaining(a.endDate) - calculateDaysRemaining(b.endDate); // Projects with fewer days first
+      return (
+        calculateDaysRemaining(a.endDate) - calculateDaysRemaining(b.endDate)
+      ); // Projects with fewer days first
     }
     return 0;
   });
@@ -80,13 +89,14 @@ const Projects = () => {
       <h1>Explore Projects</h1>
 
       {/* Sorting Dropdown */}
-      <div className="sort-container">
-      </div>
+      <div className="sort-container"></div>
 
       <div className="project-container">
         {/* If no projects are sorted */}
         {sortedProjects.length === 0 ? (
-          <p className="empty-message">No projects to display. Explore and like some!</p>
+          <p className="empty-message">
+            No projects to display. Explore and like some!
+          </p>
         ) : (
           <Swiper
             modules={[Navigation, Autoplay, Mousewheel]}
@@ -113,7 +123,10 @@ const Projects = () => {
           >
             {sortedProjects.map((item, index) => {
               const daysRemaining = calculateDaysRemaining(item.endDate);
-              const percentageRaised = calcPercentageRaised(item.raised, item.goal);
+              const percentageRaised = calcPercentageRaised(
+                item.raised,
+                item.goal
+              );
               const isLiked = likedProjects.includes(index);
 
               return (
