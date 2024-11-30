@@ -1,18 +1,40 @@
 "use client";
 
 import { FaClock, FaBookmark } from "react-icons/fa";
+import { useCurrentAccount } from "@mysten/dapp-kit";
+import { getAllProjects } from "../../utils";
+import Link from "next/link";
 import { useLikedProjects } from "../../../context/LikedProjectContext";
 import { projects } from "../../../public/assets/assets";
 import "./dashboardStyle.css";
 import { useState, useEffect } from "react";
 
 export default function Dashboard() {
+  const currentAccount = useCurrentAccount();
   const { likedProjects, setLikedProjects } = useLikedProjects();
 
   // Loading state to simulate loading delay
   const [loading, setLoading] = useState(true);
+  const [projects, setProjects] = useState([]);
 
   // Function to calculate remaining days
+  function calculateDaysLeft(timestamp) {
+    const currentDate = new Date();
+    const targetDate = new Date(timestamp * 1000); // Convert UNIX timestamp to Date
+    const timeDifference = targetDate.getTime() - currentDate.getTime();
+
+    // Convert time difference to days
+    const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+
+    if (daysLeft > 0) {
+        return `${daysLeft} days left`;
+    } else if (daysLeft === 0) {
+        return `Last day!`;
+    } else {
+        return `Expired`;
+    }
+}
+
   const calculateDaysRemaining = (endDate) => {
     const today = new Date();
     const end = new Date(endDate);
@@ -28,10 +50,28 @@ export default function Dashboard() {
   };
 
   // Filter projects based on liked state
-  const bookmarkedProjects = projects.filter((_, index) =>
-    likedProjects.includes(index)
-  );
+  
+  useEffect(() => {
+    const fetchProjects = async () => {
+      if (!currentAccount){
+        setLoading(false);
+        return;
+      }
+      try {
+        const data = await getAllProjects();
+        setProjects(data);
+      } catch (error) {
+        console.log("error fetching projects", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
+  }, [currentAccount])
 
+    const bookmarkedProjects = projects.filter((project) =>
+      project?.isBookmarked === true
+    );
   // Simulating a loading delay for the bookmarked projects
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -65,32 +105,32 @@ export default function Dashboard() {
         ) : (
           bookmarkedProjects.map((project, idx) => {
             // Find the original project index
-            const originalIndex = likedProjects[idx];
+            // const originalIndex = likedProjects[idx];
 
             // Calculate remaining days for each project
-            const daysRemaining = calculateDaysRemaining(project.endDate);
+            // const daysRemaining = calculateDaysRemaining(project?.endDate);
 
             // Calculate percentage raised
             const percentageRaised = Math.round(
-              (project.raised / project.goal) * 100
+              (project?.currentAmount / project?.targetAmount) * 100
             );
 
             return (
-              <div key={project.id || idx} className="project-card">
-                <img src={project.image} alt={project.name} />
+              <div key={project?.id || idx} className="project-card">
+                <img src={project?.image} alt={project?.name} />
 
                 <div className="project-data z-10">
                   <div className="top-flag">
-                    <span className="category">{project.category}</span>
+                    <span className="category">{project?.category}</span>
                     <span className="time">
-                      <FaClock className="icon" /> {daysRemaining} days left
+                      <FaClock className="icon" /> {calculateDaysLeft(project)}
                     </span>
                   </div>
-                  <h3>{project.name}</h3>
+                  <h3>{project?.name}</h3>
                   <div className="progress-bar">
                     <div className="stats">
                       <small>
-                        ${project.raised} raised out of ${project.goal}
+                        ${project?.currentAmount} raised out of ${project?.targetAmount}
                       </small>
                       <small>{percentageRaised}%</small>
                     </div>
@@ -102,11 +142,11 @@ export default function Dashboard() {
                     </span>
                   </div>
 
-                  <button className="invest-btn">Invest</button>
+                  <Link href={`/invest/${project?.id}`} className="invest-btn">Invest</Link>
                 </div>
 
                 <button
-                  onClick={() => removeBookmark(originalIndex)}
+                  onClick={() => {project?.isBookmarked === false}}
                   className="bookmark-button"
                 >
                   <FaBookmark className="bookmark-icon" />
