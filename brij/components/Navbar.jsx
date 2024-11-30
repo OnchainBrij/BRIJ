@@ -8,6 +8,7 @@ import Modal from "./Modal";
 import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { projects } from "../public/assets/assets";
+import Image from "next/image";
 
 const Navbar = () => {
   const //
@@ -26,7 +27,6 @@ const Navbar = () => {
         console.log(error);
       }
     },
-
     getUsers = async () => {
       console.log("reading");
 
@@ -47,14 +47,14 @@ const Navbar = () => {
 
       console.log(await axios.get("/api/projects"));
     };
-    const currentAccount = useCurrentAccount();
-    const router = useRouter();
-    useEffect(() => {
-      if (currentAccount) {
-        setLoading(true);
-        router.push("/dashboard");
-      }
-    }, [currentAccount, router]);
+  const currentAccount = useCurrentAccount();
+  const router = useRouter();
+  useEffect(() => {
+    if (currentAccount) {
+      setLoading(true);
+      router.push("/dashboard");
+    }
+  }, [currentAccount, router]);
 
   const currentPath = usePathname();
   const isActiveNav = (path) => {
@@ -86,15 +86,18 @@ const Navbar = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center inset-0  w-full fixed bg-black bg-opacity-50 z-[100]">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" />
       </div>
     );
   }
 
   return (
-    <>
-      <nav className="flex justify-center items-center fixed right-0  [&_a]:uppercase space-x-6 z-50 max-md:space-x-0 max-md:justify-end">
+    <div className="">
+      <Link href={"/"} className="fixed z-30 md:mx-16">
+        <Image src={"/assets/brijlogo.png"} width={100} height={100}></Image>
+      </Link>
+      <nav className="flex justify-center mt-4 items-center fixed right-0  [&_a]:uppercase space-x-6 z-50 max-md:space-x-0 max-md:justify-end text-white dark:text-white">
         <div className="flex-1 max-md:hidden"></div>
         <div
           className={`flex space-x-4 [&_li]:cursor-pointer [&_li]:text-white pt-2 max-md:fixed max-md:flex-col max-md:inset-0 max-md:w-full max-md:bg-[#29292973] max-md:space-x-0 max-md:-z-10 max-md:pt-20 max-md:items-center max-md:h-[60%] max-md:transform max-md:transition-transform max-md:duration-300 ${
@@ -164,7 +167,7 @@ const Navbar = () => {
           
         
       </Modal>
-    </>
+    </div>
   );
 };
 

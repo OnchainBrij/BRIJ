@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useCurrentAccount } from "@mysten/dapp-kit";
 import { getAllProjects } from "../../utils";
 import ProjectCard from "../../../components/projects/ProjectCard";
+import InvestModal from "../../../components/InvestModal";
 
 
 function ExploreProjects() {
   const currentAccount = useCurrentAccount();
   const [loading, setLoading] = useState(true);
   const [projects, setProjects] = useState([]);
-
 
   const [likedProjects, setLikedProjects] = useState(() => {
     let storedLikes;
@@ -18,10 +18,12 @@ function ExploreProjects() {
     }
     return storedLikes ? JSON.parse(storedLikes) : [];
   });
+  const [projectItem, setProjectItem] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const fetchProjects = async () => {
-      if (!currentAccount){
+      if (!currentAccount) {
         setLoading(false);
         return;
       }
@@ -35,7 +37,7 @@ function ExploreProjects() {
       }
     };
     fetchProjects();
-  }, [currentAccount])
+  }, [currentAccount]);
 
   // Save liked projects to localStorage
   useEffect(() => {
@@ -55,7 +57,9 @@ function ExploreProjects() {
   const toggleLike = (index) => {
     setProjects((prevProjects) =>
       prevProjects.map((project, i) =>
-        project.id === index ? { ...project, isBookmarked: !project.isBookmarked } : project
+        project.id === index
+          ? { ...project, isBookmarked: !project.isBookmarked }
+          : project
       )
     );
 
@@ -65,8 +69,10 @@ function ExploreProjects() {
         : [...prevLiked, index]
     );
   };
-
- 
+  const handleInvestModal = (item) => {
+    setIsModalOpen(true);
+    setProjectItem(item);
+  };
 
   function calculateDaysLeft(timestamp) {
     const currentDate = new Date();
@@ -77,9 +83,9 @@ function ExploreProjects() {
     const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 
     if (daysLeft > 0) {
-        return daysLeft;
+      return daysLeft;
     }
-}
+  }
 
   return (
     <div className="h-auto pl-5 pt-4 pb-5 ">
@@ -92,13 +98,22 @@ function ExploreProjects() {
               key={index}
               item={item}
               daysRemaining={calculateDaysLeft(item?.deadline)}
-              percentageRaised={Math.floor((item?.currentAmount / item.targetAmount) * 100)}
+              percentageRaised={Math.floor(
+                (item?.currentAmount / item.targetAmount) * 100
+              )}
               isLiked={isLiked}
-              onLike={() => toggleLike(item?.id)}
-              className ="text-white"
+              onLike={() => toggleLike(index)}
+              className="text-white"
+              onClick={() => handleInvestModal(item)}
             />
           );
         })}
+        {isModalOpen && (
+          <InvestModal
+            projectItem={projectItem}
+            onCloseModal={setIsModalOpen}
+          />
+        )}
       </div>
 
       {selectedProject && (

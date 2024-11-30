@@ -122,6 +122,19 @@ nav ul a:hover {
   background-repeat: no-repeat;
 }
 
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  grid-column: 1 / -1;
+}
+
+.progress-bar::-webkit-progress-bar {
+  background-color: #e9ecef;
+}
+.progress-bar::-webkit-progress-value {
+  background-color: #24c2a5;
+}
+
 /* loading page style  */
 .loading-page {
   width: 100%;
@@ -305,10 +318,10 @@ nav ul a:hover {
   }
 }
 
-.custom-connect-button{
+.custom-connect-button {
   padding: 0.75rem !important ;
-padding-left: 1.25rem !important ; 
-padding-right: 1.25rem !important ;
+  padding-left: 1.25rem !important ;
+  padding-right: 1.25rem !important ;
   border-radius: 0.5rem !important;
   background-color: #24c2a5 !important;
   color: #ffffff !important;

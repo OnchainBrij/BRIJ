@@ -13,7 +13,6 @@ import Link from "next/link";
 import axios from "axios";
 import { FaTimes } from "react-icons/fa";
 
-
 const Page = () => {
   // State declarations
   const [showScrollButton, setShowScrollButton] = useState(false);
@@ -116,22 +115,22 @@ const Page = () => {
       <Navbar />
       <div className="project-page relative">
         {/* Modal for wallet connection */}
-{showModal && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-    <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
-      {/* Close Icon */}
-      <button
-        onClick={() => setShowModal(false)}
-        className="absolute top-4 right-4 text-gray-500 hover:text-red-600 focus:outline-none"
-      >
-        <FaTimes size={24} />
-      </button>
-      <h2 className="text-2xl font-semibold text-gray-800">Please connect your wallet!</h2>
-    
-    </div>
-  </div>
-)}
-
+        {showModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+              {/* Close Icon */}
+              <button
+                onClick={() => setShowModal(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-red-600 focus:outline-none"
+              >
+                <FaTimes size={24} />
+              </button>
+              <h2 className="text-2xl font-semibold text-gray-800">
+                Please connect your wallet!
+              </h2>
+            </div>
+          </div>
+        )}
 
         {/* First categories section */}
         <div
@@ -198,9 +197,8 @@ const Page = () => {
                 href={`projects/${item._id}`}
                 key={item._id}
                 className="project-card z-10 "
-                
               >
-                <div data-aos="fade-up" data-aos-delay={index * 100} >
+                <div data-aos="fade-up" data-aos-delay={index * 100}>
                   <div className="top">
                     <img src={item.image} alt={item.name} />
                     <div

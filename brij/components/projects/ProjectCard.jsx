@@ -10,14 +10,14 @@ const ProjectCard = ({
   onLike,
   daysRemaining,
   percentageRaised,
-  handleClick, // Optional prop
+  onClick,
 }) => {
   return (
     <div
-      className="project-card cursor-pointer"
-      onClick={() => handleClick && handleClick(item)} // Only call if handleClick exists
-      data-aos="fade-up"
-      data-aos-delay={item.index * 100}
+      className="project-card"
+      // data-aos="fade-up"
+      // data-aos-delay={item?.index * 100}
+      onClick={onClick}
     >
       <div className="top">
         <img src={`https://gateway.pinata.cloud/ipfs/${item.image}?pinataGatewayToken=${process.env.NEXT_PUBLIC_GATEWAY_TOKEN}`} alt={item.name} />
