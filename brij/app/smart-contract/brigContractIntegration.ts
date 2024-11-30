@@ -146,7 +146,7 @@ export class BrijProjectsQueries {
                 category: bcs.string().parse(Uint8Array.from(returnValues[0][3][0])),
                 creator: `0x${this.Address.parse(Uint8Array.from(returnValues[0][4][0]))}`,
                 targetAmount: bcs.u64().parse(Uint8Array.from(returnValues[0][5][0])),
-                currentAmount: bcs.u64().parse(Uint8Array.from(returnValues[0][6][0])),
+                currentAmount: Number(bcs.u64().parse(Uint8Array.from(returnValues[0][6][0]))) / 1000000000,
                 deadline: bcs.u64().parse(Uint8Array.from(returnValues[0][7][0])),
                 isActive: bcs.bool().parse(Uint8Array.from(returnValues[0][8][0])),
                 isSuccessful: bcs.bool().parse(Uint8Array.from(returnValues[0][9][0])),
