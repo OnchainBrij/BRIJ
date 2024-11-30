@@ -4,7 +4,6 @@ import { useCurrentAccount } from "@mysten/dapp-kit";
 import { getAllProjects } from "../../utils";
 import ProjectCard from "../../../components/projects/ProjectCard";
 import InvestModal from "../../../components/InvestModal";
-import { projects as projectData } from "../../../public/assets/assets";
 
 function ExploreProjects() {
   const currentAccount = useCurrentAccount();

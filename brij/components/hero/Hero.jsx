@@ -2,6 +2,7 @@ import "./heroStyle.css";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 
 const Hero = () => {
   useEffect(() => {
@@ -16,7 +17,7 @@ const Hero = () => {
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          <p>Welcome to BRIJ - Where dreams find backers</p>
+          <p>Where dreams find backers</p>
         </div>
 
         <h1 data-aos="fade-up" data-aos-delay="400">
@@ -26,7 +27,8 @@ const Hero = () => {
           </span>
         </h1>
 
-        <button data-aos="zoom-in" data-aos-delay="800">Get Started</button>
+        
+        <ConnectButton className="ConnectButton" data-aos="zoom-in" data-aos-delay="800" connectText="GET STARTED" />
       </div>
 
       <div

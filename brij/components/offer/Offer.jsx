@@ -3,6 +3,7 @@ import "./offerStyle.css";
 import { offers } from "../../public/assets/assets.js";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import { ConnectButton, useCurrentAccount } from "@mysten/dapp-kit";
 
 const Offer = () => {
   useEffect(() => {
@@ -41,9 +42,8 @@ const Offer = () => {
         <h1 style={{ marginBottom: "10px" }}>
           Create a project to experience our benefits
         </h1>
-        <button className="custom-button">
-          <span></span>CREATE A PROJECT
-        </button>
+        
+        <ConnectButton  className="custom-button" connectText="CREATE A PROJECT" />
       </div>
     </div>
   );
