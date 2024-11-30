@@ -28,7 +28,7 @@ const Hero = () => {
         </h1>
 
         
-        <ConnectButton className="ConnectButton" data-aos="zoom-in" data-aos-delay="800" connectText="Get Started" />
+        <ConnectButton className="ConnectButton" data-aos="zoom-in" data-aos-delay="800" connectText="GET STARTED" />
       </div>
 
       <div

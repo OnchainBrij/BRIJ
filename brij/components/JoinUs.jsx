@@ -9,7 +9,7 @@ function JoinUs() {
           Ready to Raise Funds for Idea?
         </p>
         
-        <ConnectButton style={{backgroundColor: "#1b1f2e", textTransform: "uppercase", borderRadius: "50px", color: "#fff", fontSize: "1.03rem", textAlign: "center", padding: "2rem 3rem"  }} connectText="Make it Happen" />
+        <ConnectButton style={{backgroundColor: "#1b1f2e", transition: "0.3s ease-in-out", transform: "scale(1.1)", textTransform: "uppercase", borderRadius: "50px", color: "#fff", fontSize: "1.03rem", textAlign: "center", padding: "13px 40px"  }} connectText="Make it Happen" />
       </div>
     </div>
   );
