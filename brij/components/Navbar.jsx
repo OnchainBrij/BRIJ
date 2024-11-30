@@ -26,7 +26,6 @@ const Navbar = () => {
         console.log(error);
       }
     },
-
     getUsers = async () => {
       console.log("reading");
 
@@ -47,14 +46,14 @@ const Navbar = () => {
 
       console.log(await axios.get("/api/projects"));
     };
-    const currentAccount = useCurrentAccount();
-    const router = useRouter();
-    useEffect(() => {
-      if (currentAccount) {
-        setLoading(true);
-        router.push("/dashboard");
-      }
-    }, [currentAccount, router]);
+  const currentAccount = useCurrentAccount();
+  const router = useRouter();
+  useEffect(() => {
+    if (currentAccount) {
+      setLoading(true);
+      router.push("/dashboard");
+    }
+  }, [currentAccount, router]);
 
   const currentPath = usePathname();
   const isActiveNav = (path) => {
@@ -86,7 +85,7 @@ const Navbar = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center inset-0  w-full fixed bg-black bg-opacity-50 z-[100]">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" />
       </div>
     );

@@ -209,7 +209,7 @@ async function ProjectDetails({ params }) {
                 <progress
                   max="100"
                   value={(matchedProject.raised / matchedProject.goal) * 100}
-                  className={styles.progressBar}
+                  className="progress-bar"
                 />
               </div>
               <div className="mt-3">

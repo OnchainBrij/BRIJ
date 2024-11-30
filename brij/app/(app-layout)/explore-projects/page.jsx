@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import ProjectCard from "../../../components/projects/ProjectCard";
+import InvestModal from "../../../components/InvestModal";
 import { projects as projectData } from "../../../public/assets/assets";
 
 function ExploreProjects() {
@@ -11,6 +12,8 @@ function ExploreProjects() {
     }
     return storedLikes ? JSON.parse(storedLikes) : [];
   });
+  const [projectItem, setProjectItem] = useState();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Save liked projects to localStorage
   useEffect(() => {
@@ -27,7 +30,10 @@ function ExploreProjects() {
         : [...prevLiked, index]
     );
   };
-
+  const handleInvestModal = (item) => {
+    setIsModalOpen(true);
+    setProjectItem(item);
+  };
   return (
     <div className="h-auto pl-5 pt-4 pb-5 ">
       <h1 className="font-bold mb-6">Explore Projects</h1>
@@ -43,9 +49,16 @@ function ExploreProjects() {
               isLiked={isLiked}
               onLike={() => toggleLike(index)}
               className="text-white"
+              onClick={() => handleInvestModal(item)}
             />
           );
         })}
+        {isModalOpen && (
+          <InvestModal
+            projectItem={projectItem}
+            onCloseModal={setIsModalOpen}
+          />
+        )}
       </div>
     </div>
   );

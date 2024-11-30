@@ -138,7 +138,7 @@ export const projects = [
     backgroundImage:
       "https://imagizer.imageshack.com/v2/371x318q90/922/k4DPIX.png",
   },
-];  
+];
 
 export const testimonialData = [
   {
