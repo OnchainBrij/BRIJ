@@ -5,7 +5,7 @@ import { useCurrentAccount } from "@mysten/dapp-kit";
 import { getAllProjects } from "../../utils";
 import Link from "next/link";
 import { useLikedProjects } from "../../../context/LikedProjectContext";
-import { projects } from "../../../public/assets/assets";
+// import { projects } from "../../../public/assets/assets";
 import "./dashboardStyle.css";
 import { useState, useEffect } from "react";
 

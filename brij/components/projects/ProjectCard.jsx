@@ -33,7 +33,7 @@ const ProjectCard = ({
         <div className="top-flag">
           <span className="category">{item.category}</span>
           <span className="time">
-            <FaClock className="icon" /> {daysRemaining} days left
+            <FaClock className="icon" /> {daysRemaining > 0 ? `${daysRemaining} days left`: "Expired" } 
           </span>
         </div>
 
