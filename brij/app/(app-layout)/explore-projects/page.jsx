@@ -3,7 +3,7 @@ import { projects } from "../../../public/assets/assets";
 
 function ExploreProjects() {
   return (
-    <div className="h-screen pl-5">
+    <div className="h-screen pl-5 pt-3 pb-3 bg-red-700">
       <h1 className="font-bold mb-6">Explore Projects</h1>
       <div className="grid grid-cols-3 2xl:grid-cols-4 gap-y-5">
         {projects.map((item, index) => (
