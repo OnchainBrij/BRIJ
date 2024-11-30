@@ -7,7 +7,7 @@ import "./projectStyle.css";
 const ProjectCard = ({
   item,
   isLiked,
-  toggleLike,
+  onLike,
   daysRemaining,
   percentageRaised,
   handleClick, // Optional prop
@@ -20,13 +20,10 @@ const ProjectCard = ({
       data-aos-delay={item.index * 100}
     >
       <div className="top">
-        <img src={item.image} alt={item.name} />
+        <img src={`https://gateway.pinata.cloud/ipfs/${item.image}?pinataGatewayToken=${process.env.NEXT_PUBLIC_GATEWAY_TOKEN}`} alt={item.name} />
         <div
           className={`heart ${isLiked ? "active" : ""}`}
-          onClick={(e) => {
-            e.stopPropagation(); // Prevent click from propagating to the card
-            toggleLike(item.index);
-          }}
+          onClick={() => onLike(item.id)}
         >
           <FaBookmark />
         </div>
@@ -44,7 +41,7 @@ const ProjectCard = ({
 
         <div className="metre">
           <div className="figures">
-            <p>Raised: ${item.raised}</p>
+            <p>Raised: {item.currentAmount} SUI</p>
             <p>{percentageRaised}%</p>
           </div>
           <span className="outer-metre">
@@ -55,7 +52,7 @@ const ProjectCard = ({
           </span>
         </div>
 
-        <h4 className="goal">Goal: ${item.goal}</h4>
+        <h4 className="goal">Goal: {item.targetAmount} SUI</h4>
       </div>
     </div>
   );
