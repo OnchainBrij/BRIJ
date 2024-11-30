@@ -304,3 +304,12 @@ nav ul a:hover {
     transform: scale(1);
   }
 }
+
+.custom-connect-button{
+  padding: 0.75rem !important ;
+padding-left: 1.25rem !important ; 
+padding-right: 1.25rem !important ;
+  border-radius: 0.5rem !important;
+  background-color: #24c2a5 !important;
+  color: #ffffff !important;
+}

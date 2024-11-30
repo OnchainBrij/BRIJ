@@ -3,31 +3,23 @@ import React, { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./projectsPage.css";
-import { categoryButton, projects } from "../../public/assets/assets";
+import { categoryButton } from "../../public/assets/assets";
 import { FaBookmark, FaClock, FaHeart } from "react-icons/fa";
 import Navbar from "../../components/Navbar";
 import JoinUs from "../../components/JoinUs";
 import { FaStar, FaChevronUp } from "react-icons/fa6";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import axios from "axios";
+import { FaTimes } from "react-icons/fa";
+
 
 const Page = () => {
-  // scroll-to-top-function
+  // State declarations
   const [showScrollButton, setShowScrollButton] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      setShowScrollButton(scrollTop > 0);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
+  const [projects, setProjects] = useState([]);
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [showModal, setShowModal] = useState(false); // Modal state
   const [likedProjects, setLikedProjects] = useState(() => {
     let storedLikes;
     if (typeof window !== "undefined") {
@@ -35,20 +27,41 @@ const Page = () => {
     }
     return storedLikes ? JSON.parse(storedLikes) : [];
   });
+  const [displayCount, setDisplayCount] = useState(6);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const [displayCount, setDisplayCount] = useState(6); // State for number of displayed projects
-  const [selectedCategory, setSelectedCategory] = useState(""); // State for selected category
+  // Scroll-to-top functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      setShowScrollButton(scrollTop > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
+  // Fetch projects from API
+  useEffect(() => {
+    (async () => {
+      setProjects((await axios.get("/api/projects")).data.Projects);
+    })();
+  }, []);
+
+  // Initialize AOS animations
   useEffect(() => {
     AOS.init({ duration: 500, once: true });
   }, []);
 
+  // Save liked projects to localStorage
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("likedProjects", JSON.stringify(likedProjects));
     }
   }, [likedProjects]);
 
+  // Calculate days remaining for project
   const calculateDaysRemaining = (endDate) => {
     const today = new Date();
     const end = new Date(endDate);
@@ -56,11 +69,24 @@ const Page = () => {
     return Math.max(Math.ceil(timeDiff / (1000 * 60 * 60 * 24)), 0);
   };
 
+  // Calculate percentage raised for project
   const calcPercentageRaised = (raised, goal) => {
     return ((raised / goal) * 100).toFixed(1);
   };
 
+  // Function to check wallet connection
+  const checkWalletConnection = () => {
+    if (!walletConnected) {
+      setShowModal(true);
+      return false;
+    }
+    return true;
+  };
+
+  // Toggle like functionality with wallet check
   const toggleLike = (index) => {
+    if (!checkWalletConnection()) return;
+
     setLikedProjects((prevLiked) =>
       prevLiked.includes(index)
         ? prevLiked.filter((item) => item !== index)
@@ -75,8 +101,9 @@ const Page = () => {
     return isLikedB - isLikedA; // Liked projects first
   });
 
+  // Load more projects
   const loadMoreProjects = () => {
-    setDisplayCount((prevCount) => prevCount + 3); // Increase displayed projects count
+    setDisplayCount((prevCount) => prevCount + 3);
   };
 
   // Filter projects based on the selected category
@@ -88,11 +115,29 @@ const Page = () => {
     <div>
       <Navbar />
       <div className="project-page relative">
-        {/* First categories section with animation */}
+        {/* Modal for wallet connection */}
+{showModal && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+      {/* Close Icon */}
+      <button
+        onClick={() => setShowModal(false)}
+        className="absolute top-4 right-4 text-gray-500 hover:text-red-600 focus:outline-none"
+      >
+        <FaTimes size={24} />
+      </button>
+      <h2 className="text-2xl font-semibold text-gray-800">Please connect your wallet!</h2>
+    
+    </div>
+  </div>
+)}
+
+
+        {/* First categories section */}
         <div
           className="categories"
           style={{ minHeight: "40vh", paddingTop: "100px" }}
-          data-aos="fade-up" // Adding animation to the entire section
+          data-aos="fade-up"
         >
           <div data-aos="fade-right" data-aos-delay="100">
             <span className="dot"></span> <h3>Which Category Interests You</h3>
@@ -122,8 +167,8 @@ const Page = () => {
                 href="#projects"
                 key={index}
                 onClick={() => setSelectedCategory(item.name)}
-                data-aos="fade-up" // Adding fade-up animation to each category button
-                data-aos-delay={`${500 + index * 100}`} // Delay for each button
+                data-aos="fade-up"
+                data-aos-delay={`${500 + index * 100}`}
               >
                 <div className="categorySelector">
                   <div className="icon"> {item.image}</div>
@@ -134,60 +179,9 @@ const Page = () => {
             ))}
           </div>
         </div>
-        {/* Featured Projects Section */}
-        <div className="categories" style={{ marginBottom: "50px" }}>
-          <div>
-            <span className="dot"></span> <h3>Businesses You Can Back</h3>
-          </div>
-          <h1>Featured Projects</h1>
-          <div className="featured-projects-container">
-            {projects.slice(0, 3).map((item, index) => {
-              const percentageRaised = calcPercentageRaised(
-                item.raised,
-                item.goal
-              );
-              const daysRemaining = calculateDaysRemaining(item.endDate);
-              return (
-                <Link href={`projects/${item._id}`} key={index}>
-                  <div className="featured-card">
-                    <img
-                      src={item.backgroundImage}
-                      alt=""
-                      className="background-img"
-                    />
-                    <FaStar className="star-icon" />
-                    <div className="feature-text">
-                      <span className="category-span">
-                        <div className="category">{item.category}</div>
-                        <div className="time">
-                          <FaClock className="icon" /> {daysRemaining} days left
-                        </div>
-                      </span>
-                      <div className="name">{item.name}</div>
-                      <div className="progress-bar">
-                        <div className="stats">
-                          <small>
-                            ${item.raised} raised out of ${item.goal}
-                          </small>
-                          <small>{percentageRaised}%</small>
-                        </div>
-                        <span className="outer-metre">
-                          <span
-                            className="inner-metre"
-                            style={{ width: `${percentageRaised}%` }}
-                          ></span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+
         {/* Projects Section */}
         <div className="project-container categories">
-          <span className="dot"></span>{" "}
           <h3 className="z-10">Businesses You Can Back</h3>
           <h1 className="z-10">Explore Projects</h1>
         </div>
@@ -203,14 +197,18 @@ const Page = () => {
               <Link
                 href={`projects/${item._id}`}
                 key={item._id}
-                className="project-card z-10"
+                className="project-card z-10 "
+                
               >
-                <div data-aos="fade-up" data-aos-delay={index * 100}>
+                <div data-aos="fade-up" data-aos-delay={index * 100} >
                   <div className="top">
                     <img src={item.image} alt={item.name} />
                     <div
                       className={`heart ${isLiked ? "active" : ""}`}
-                      onClick={() => toggleLike(projects.indexOf(item))}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleLike(projects.indexOf(item));
+                      }}
                     >
                       <FaBookmark />
                     </div>

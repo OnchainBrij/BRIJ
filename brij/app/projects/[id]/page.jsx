@@ -7,7 +7,7 @@ import Navbar from "../../../components/Navbar";
 import { projects } from "../../../public/assets/assets";
 
 async function ProjectDetails({ params }) {
-  const id = (await params).id;
+  const id = (await params)._id;
   const matchedProject = projects.find((item) => item._id === id);
   // console.log(matchedProject);
 
