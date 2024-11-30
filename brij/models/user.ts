@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
   address: { type: String, required: true },
-  bookmarked: [{ type: mongoose.Schema.Types.ObjectId, ref: "Projects" }] // Array of ObjectIds referencing another model
+  likedProjects: [{ type: mongoose.Schema.Types.ObjectId, ref: "Projects" }], // Array of ObjectIds referencing another model
 });
 
 const User = mongoose.models.Users || mongoose.model("Users", userSchema);

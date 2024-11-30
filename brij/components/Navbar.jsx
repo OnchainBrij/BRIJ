@@ -8,6 +8,7 @@ import Modal from "./Modal";
 import { usePathname, useRouter } from "next/navigation";
 import axios from "axios";
 import { projects } from "../public/assets/assets";
+import Image from "next/image";
 
 const Navbar = () => {
   const //
@@ -26,7 +27,6 @@ const Navbar = () => {
         console.log(error);
       }
     },
-
     getUsers = async () => {
       console.log("reading");
 
@@ -47,14 +47,14 @@ const Navbar = () => {
 
       console.log(await axios.get("/api/projects"));
     };
-    const currentAccount = useCurrentAccount();
-    const router = useRouter();
-    useEffect(() => {
-      if (currentAccount) {
-        setLoading(true);
-        router.push("/dashboard");
-      }
-    }, [currentAccount, router]);
+  const currentAccount = useCurrentAccount();
+  const router = useRouter();
+  useEffect(() => {
+    if (currentAccount) {
+      setLoading(true);
+      router.push("/dashboard");
+    }
+  }, [currentAccount, router]);
 
   const currentPath = usePathname();
   const isActiveNav = (path) => {
@@ -93,8 +93,14 @@ const Navbar = () => {
   }
 
   return (
-    <>
-      <nav className="flex justify-center items-center fixed right-0  [&_a]:uppercase space-x-6 z-50 max-md:space-x-0 max-md:justify-end">
+    <div className="flex items-center">
+      <Link
+        href={"/"}
+        className="mx-16 fixed top-0 left-0 z-30 backdrop-blur rounded-lg"
+      >
+        <Image src={"/assets/brijlogo.png"} width={100} height={100}></Image>
+      </Link>
+      <nav className="flex mt-24 justify-center items-center fixed right-0  [&_a]:uppercase space-x-6 z-50 max-md:space-x-0 max-md:justify-end">
         <div className="flex-1 max-md:hidden"></div>
         <div
           className={`flex space-x-4 [&_li]:cursor-pointer [&_li]:text-white pt-2 max-md:fixed max-md:flex-col max-md:inset-0 max-md:w-full max-md:bg-[#29292973] max-md:space-x-0 max-md:-z-10 max-md:pt-20 max-md:items-center max-md:h-[60%] max-md:transform max-md:transition-transform max-md:duration-300 ${
@@ -164,7 +170,7 @@ const Navbar = () => {
           </div>
         </div>
       </Modal>
-    </>
+    </div>
   );
 };
 

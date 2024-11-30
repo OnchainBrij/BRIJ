@@ -42,7 +42,7 @@ function ExploreProjects() {
               percentageRaised={Math.floor((item.raised / item.goal) * 100)}
               isLiked={isLiked}
               onLike={() => toggleLike(index)}
-              className ="text-white"
+              className="text-white"
             />
           );
         })}

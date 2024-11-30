@@ -6,13 +6,16 @@ export async function POST(request) {
   try {
     await connection();
     const //
-      { address } = await request.json(),
-      newUser = new User({ address: address, likedProjects: "" });
+      { address, likedProjects } = await request.json();
+
+    // check if user exists
     if (await User.findOne({ address: address })) {
-      return NextResponse.json({ message: "User already exists", data: {} });
+      await User.updateOne(
+        { address: address },
+        { $addToSet: { likedProjects: likedProjects } } // Add newObjectId if not present
+      );
     } else {
-      await newUser.save();
-      return NextResponse.json({ message: "Stored user", newUser });
+      await new User({ address, likedProjects }).save();
     }
   } catch (error) {
     console.log(error);
@@ -22,9 +25,6 @@ export async function POST(request) {
 export async function GET(request) {
   try {
     await connection();
-
-    const users = await User.find({});
-    return NextResponse.json({ message: "Fetched all users", users });
   } catch (error) {
     console.log(error.message | error.shortMessage);
   }
