@@ -94,7 +94,7 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <Link href={"/"} className="fixed z-30 md:mx-16">
+      <Link href={"/"} className="fixed z-30 md:mx-16 backdrop-blur-md">
         <Image src={"/assets/brijlogo.png"} width={100} height={100}></Image>
       </Link>
       <nav className="flex justify-center mt-4 items-center fixed right-0  [&_a]:uppercase space-x-6 z-50 max-md:space-x-0 max-md:justify-end text-white dark:text-white">
