@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { FaBookmark, FaClock } from "react-icons/fa";
 import "./projectStyle.css"; // Keep shared styles here
