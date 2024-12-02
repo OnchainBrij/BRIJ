@@ -89,7 +89,7 @@ export class BrijProjectsQueries {
         }
         
         this.keypair = Ed25519Keypair.fromSecretKey(decodeSuiPrivateKey(privateKey).secretKey);
-        this.client = new SuiClient({ url: getFullnodeUrl("devnet") });
+        this.client = new SuiClient({ url: getFullnodeUrl("testnet") });
         this.Address = bcs.bytes(32).transform({
             input: (val: string) => fromHex(val),
             output: (val) => toHex(val),

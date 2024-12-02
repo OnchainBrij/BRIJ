@@ -74,7 +74,7 @@ function AddProject() {
 
         signAndExecuteTransaction({
             transaction: trx,
-            chain: 'sui:devnet',
+            chain: 'sui:testnet',
         }, {
             onSuccess: ({digest}) => {
                 console.log("Transaction successful:", digest);

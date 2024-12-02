@@ -37,7 +37,7 @@ function InvestModal({ projectItem, setIsModalOpen }) {
     signAndExecuteTransaction(
       {
         transaction: txn,
-        chain: "sui:devnet",
+        chain: "sui:testnet",
       },
       {
         onSuccess: async (result) => {
@@ -62,7 +62,7 @@ function InvestModal({ projectItem, setIsModalOpen }) {
     signAndExecuteTransaction(
       {
         transaction: txn,
-        chain: "sui:devnet",
+        chain: "sui:testnet",
       },
       {
         onSuccess: async (result) => {

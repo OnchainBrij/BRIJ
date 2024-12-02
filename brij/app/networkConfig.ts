@@ -9,16 +9,17 @@ const {networkConfig, useNetworkVariable, useNetworkVariables} = createNetworkCo
     devnet: {
         url: getFullnodeUrl("devnet"),
         variables: {
-            packageId: PACKAGE_ID,
-          managerId: PROJECT_MANAGER_ID,
+          packageId: "0xpackage",
+          managerId: "0xmanager",
+
         },
     },
     testnet: {
         url: getFullnodeUrl("testnet"),
-          variables: {
-              packageId: "0xpackage",
-              managerId: "0xmanager",
-            },
+        variables: {
+          packageId: PACKAGE_ID,
+        managerId: PROJECT_MANAGER_ID,
+      },
           
     
     },
